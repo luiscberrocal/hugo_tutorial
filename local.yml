@@ -1,0 +1,14 @@
+version: '3'
+
+
+services:
+  server:
+    build:
+      context: "."
+      dockerfile: "./compose/hugo/Dockerfile"
+    image: hugo_server_image
+    command: server
+    volumes:
+      - "./new-site:/src"
+    ports:
+      - "1313:1313"
