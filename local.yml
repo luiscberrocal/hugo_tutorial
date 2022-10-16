@@ -7,7 +7,7 @@ services:
       context: "."
       dockerfile: "./compose/hugo/Dockerfile"
     image: hugo_server_image
-    command: server
+    command: server --noHTTPCache
     volumes:
       - "./new-site:/src"
     ports:
