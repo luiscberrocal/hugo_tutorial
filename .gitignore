@@ -129,3 +129,4 @@ dmypy.json
 .pyre/
 .idea/
 new-site/.hugo_build.lock
+/tailwind/public/main.css
