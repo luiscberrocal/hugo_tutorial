@@ -3,10 +3,10 @@ version: '3'
 
 services:
     hugo_server:
+        container_name: 'hugo_server'
         build:
           context: "."
           dockerfile: "./compose/hugo/Dockerfile"
-        image: hugo_server_image
         command: server --noHTTPCache
         volumes:
           - "./new-site:/src"
@@ -14,12 +14,14 @@ services:
           - "1313:1313"
 
     tailwindcss:
-        container_name: 'tailwindcss_container'
-        build: .
+        container_name: 'hugo_tailwindcss_container'
+        build:
+            context: "."
+            dockerfile: "./compose/node/Dockerfile"
         restart: unless-stopped
         ports:
             - '9000:9000'
         volumes:
-            - './src:/var/www'
+            - './tailwind:/var/www'
         working_dir: /var/www
         command: bash -c "npm install && npm run dev"
